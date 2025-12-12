@@ -1,0 +1,32 @@
+{
+  "subscribers": [
+    {
+      "id": 1765528921088,
+      "name": "Donation_guy",
+      "email": "donationguy@gmail.com",
+      "interests": "yo-",
+      "createdAt": "2025-12-12T08:42:01.088Z"
+    },
+    {
+      "id": 1765528300289,
+      "name": "",
+      "email": "harnithsl.btech23@rvu.edu.in",
+      "interests": "",
+      "createdAt": "2025-12-12T08:31:40.289Z"
+    },
+    {
+      "id": 1765526675596,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "interests": "volunteering",
+      "createdAt": "2025-12-12T08:04:35.596Z"
+    },
+    {
+      "id": 1765526529722,
+      "name": "Test",
+      "email": "test@example.com",
+      "interests": "",
+      "createdAt": "2025-12-12T08:02:09.722Z"
+    }
+  ]
+}
