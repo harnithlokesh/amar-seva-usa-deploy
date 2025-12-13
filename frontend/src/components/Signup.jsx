@@ -1,61 +1,51 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import pic3 from '../assets/pic3.png';
 
 export default function Signup() {
-  const [form, setForm] = useState({ name: '', email: '', interests: '' });
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState('');
 
-  const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:4000';
-
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const submit = async (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    setStatus('loading');
-
-    try {
-      const res = await fetch(`${apiBase}/api/subscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
-      });
-      const data = await res.json();
-      if (data.success) {
-        setStatus('success');
-        setForm({ name: '', email: '', interests: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
-  }
+    setStatus('Thank you for subscribing!');
+  };
 
   return (
     <section id="signup" className="signup container">
-      <h2>Stay Updated</h2>
-      <p>Sign up to receive updates on programs, events and volunteer opportunities.</p>
+      {/* ✅ Newsletter banner image */}
+      <img
+        src={pic3}
+        alt="Community members engaging with programs, events, and volunteer opportunities"
+        className="signup-media"
+      />
 
-      <form onSubmit={submit} className="signup-form">
+      <h2>Stay Updated</h2>
+      <p>
+        Sign up to receive updates on our programs, events, and volunteer
+        opportunities.
+      </p>
+
+      <form className="signup-form" onSubmit={handleSubmit}>
         <label>
           Name
-          <input name="name" value={form.name} onChange={handleChange} />
-        </label>
-        <label>
-          Email *
-          <input name="email" value={form.email} onChange={handleChange} required />
-        </label>
-        <label>
-          Interests
-          <input name="interests" value={form.interests} onChange={handleChange} />
+          <input type="text" required />
         </label>
 
-        <button className="btn primary" type="submit">Subscribe</button>
+        <label>
+          Email
+          <input type="email" required />
+        </label>
+
+        <label>
+          Interests (optional)
+          <input type="text" />
+        </label>
+
+        <button type="submit" className="btn primary">
+          Subscribe
+        </button>
+
+        {status && <div className="muted">{status}</div>}
       </form>
-
-      {status === 'loading' && <p>Sending...</p>}
-      {status === 'success' && <p className="muted">Thanks — you're on the list!</p>}
-      {status === 'error' && <p className="error">Something went wrong — try again later.</p>}
     </section>
   );
 }

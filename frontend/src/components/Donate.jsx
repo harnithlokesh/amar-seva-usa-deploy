@@ -1,29 +1,125 @@
-import React from 'react';
+import { useState } from 'react';
+import {
+  GraduationCap,
+  Stethoscope,
+  Accessibility,
+  Users
+} from 'lucide-react';
 
 export default function Donate() {
-  // env: put your Zeffy URL here when ready
-  const zeffyUrl = import.meta.env.VITE_ZEFFY_URL || '';
+  const zeffyLinks = {
+    oneTime: import.meta.env.VITE_ZEFFY_ONETIME,
+    monthly: import.meta.env.VITE_ZEFFY_MONTHLY,
+    custom: import.meta.env.VITE_ZEFFY_CUSTOM
+  };
+
+  // No option selected by default
+  const [type, setType] = useState(null);
+
+  const handleDonate = () => {
+    if (!type) return;
+
+    const link = zeffyLinks[type];
+    if (!link) {
+      alert('Zeffy donation link not configured');
+      return;
+    }
+
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section id="donate" className="donate container">
-      <h2>Support Our Mission</h2>
-      <p>Your contribution helps provide therapies, inclusive education, mobility aids, and community programs.</p>
+      <h2 style={{ textAlign: 'center' }}>Support Our Mission</h2>
 
-      <div className="donation-options">
-        <button className="btn">One-time</button>
-        <button className="btn">Monthly</button>
-        <button className="btn">Custom</button>
+      {/* Donation impact cards */}
+      <div className="donate-grid">
+        <div className="donate-card">
+          <div className="card-media health">
+            <Stethoscope size={28} />
+          </div>
+          <h3>Therapies & Healthcare</h3>
+          <p>
+            Access to essential therapies, rehabilitation services,
+            and ongoing medical support.
+          </p>
+        </div>
+
+        <div className="donate-card">
+          <div className="card-media education">
+            <GraduationCap size={28} />
+          </div>
+          <h3>Inclusive Education</h3>
+          <p>
+            Quality education programs designed to meet diverse learning
+            needs and abilities.
+          </p>
+        </div>
+
+        <div className="donate-card">
+          <div className="card-media skills">
+            <Accessibility size={28} />
+          </div>
+          <h3>Mobility Aids</h3>
+          <p>
+            Assistive devices that promote independence, movement,
+            and everyday accessibility.
+          </p>
+        </div>
+
+        <div className="donate-card">
+          <div className="card-media community">
+            <Users size={28} />
+          </div>
+          <h3>Community Programs</h3>
+          <p>
+            Inclusive initiatives that build confidence, participation,
+            and long-term empowerment.
+          </p>
+        </div>
       </div>
 
-      <div style={{marginTop: '1rem'}}>
-        {zeffyUrl ? (
-          <a className="btn primary" href={zeffyUrl} target="_blank" rel="noopener noreferrer">Donate via Zeffy</a>
-        ) : (
-          <button className="btn primary" onClick={() => alert('Zeffy URL not set. Add VITE_ZEFFY_URL in frontend/.env')}>Donate</button>
-        )}
+      {/* Donation type selection */}
+      <div
+        className="donation-options"
+        style={{ justifyContent: 'center', marginTop: '2rem' }}
+      >
+        <button
+          className={`btn ${type === 'oneTime' ? 'active' : ''}`}
+          onClick={() => setType('oneTime')}
+        >
+          One-time donation
+        </button>
+
+        <button
+          className={`btn ${type === 'monthly' ? 'active' : ''}`}
+          onClick={() => setType('monthly')}
+        >
+          Monthly recurring donation
+        </button>
+
+        <button
+          className={`btn ${type === 'custom' ? 'active' : ''}`}
+          onClick={() => setType('custom')}
+        >
+          Custom amount
+        </button>
       </div>
 
-      <small style={{display:'block', marginTop:8}}>Tip: once you have your Zeffy form URL we’ll switch this to an embedded modal or iframe if you want.</small>
+      {/* Donate CTA */}
+      <div style={{ textAlign: 'center', marginTop: '1.8rem' }}>
+        <button
+          className="btn primary donate-cta"
+          onClick={handleDonate}
+          disabled={!type}
+        >
+          Donate Now
+        </button>
+
+        <small style={{ display: 'block', marginTop: 10, opacity: 0.8 }}>
+          Secure checkout powered by Zeffy
+        </small>
+      </div>
     </section>
   );
 }

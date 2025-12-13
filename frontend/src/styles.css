@@ -1,5 +1,6 @@
 /* Import must be at the top for Vite/PostCSS */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap');
+
 
 /* ----------------------------------------
    Pastel Palette (Your Chosen Colors)
@@ -44,6 +45,24 @@ body{
   padding: 2rem;
 }
 
+
+/* ----------------------------------------
+   Typography Refinement (Not Flashy)
+   ---------------------------------------- */
+h1, h2, h3 {
+  font-family: 'Source Serif 4', serif;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2, h3 {
+  font-weight: 600;
+}
+
+
 /* ----------------------------------------
    Navigation
    ---------------------------------------- */
@@ -51,7 +70,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding: 1rem 0;
+  padding: 2rem 0.7;
   position:sticky;
   top:0;
   z-index:50;
@@ -109,6 +128,26 @@ body{
   border: 1px solid rgba(0,0,0,0.04);
 }
 
+.hero-media {
+  margin-top: 1.5rem;
+  width: 100%;
+  height: 220px;
+
+  object-fit: cover;           /* 👈 desktop looks good */
+  object-position: center;
+
+  border-radius: 16px;
+  display: block;
+  background-color: var(--beige);
+}
+
+/* Mobile override */
+@media (max-width: 600px) {
+  .hero-media {
+    object-fit: contain;       /* 👈 mobile shows full image */
+  }
+}
+
 .hero h1{
   margin:0;
   font-size: clamp(1.7rem, 2.5vw, 2.4rem);
@@ -146,6 +185,29 @@ section.signup{
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(0,0,0,0.04);
 }
+
+.about-layout{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:1.5rem;
+}
+
+.about-media{
+  height: 300px;
+}
+
+@media(max-width:850px){
+  .about-layout{
+    grid-template-columns: 1fr;
+  }
+}
+
+.signup-media{
+  height: 160px;
+  width: 1000px;
+  margin-bottom: 1rem;
+}
+
 
 h2{
   margin:0 0 .6rem 0;
@@ -232,4 +294,117 @@ h3{
   .container{ padding:1.2rem; }
   .hero-inner{ padding:1.3rem; }
   .footer{ flex-direction:column; align-items:flex-start; gap:.6rem; }
+}
+
+/* ----------------------------------------
+   Donate Grid (Card Layout)
+   ---------------------------------------- */
+.donate-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.donate-card{
+  background: var(--white);
+  padding: 1.4rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0,0,0,0.04);
+  text-align: center;
+}
+
+.donate-card .card-media{
+  width: 64px;
+  height: 64px;
+  margin: 0 auto .7rem;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  
+}
+
+/* Individual icon themes */
+.card-media.education{
+  background: rgba(102,184,255,0.25);
+  color: #2b6ea3;
+}
+
+.card-media.health{
+  background: rgba(248,113,113,0.2);
+  color: #b91c1c;
+}
+
+.card-media.skills{
+  background: rgba(250,204,21,0.25);
+  color: #92400e;
+}
+
+.card-media.community{
+  background: rgba(52,211,153,0.25);
+  color: #065f46;
+}
+
+
+.donate-card h3{
+  margin-bottom: .4rem;
+}
+
+.donate-card p{
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+/* ----------------------------------------
+   Donate Buttons – Interaction States
+   ---------------------------------------- */
+
+/* Donation option hover */
+.donation-options .btn:hover {
+  background: var(--accent-blue);
+  color: white;
+}
+
+/* Active donation option */
+.donation-options .btn.active {
+  background: var(--accent-blue);
+  color: white;
+  box-shadow: 0 6px 20px rgba(102,184,255,0.25);
+}
+
+/* Donate CTA hover */
+.donate-cta:hover:not(:disabled) {
+  background: var(--accent-blue-dark);
+}
+
+/* Disabled Donate button */
+.donate-cta:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+
+/* ----------------------------------------
+   Image Placeholders (Temporary)
+   ---------------------------------------- */
+.img-placeholder{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(102,184,255,0.18),
+      rgba(102,184,255,0.05)
+    );
+  border: 1px dashed rgba(43,110,163,0.35);
+  border-radius: var(--radius-md);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--accent-blue-dark);
+  font-weight:600;
+  text-align:center;
+  box-shadow: var(--shadow-subtle);
 }
