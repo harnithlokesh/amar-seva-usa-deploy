@@ -11,39 +11,29 @@ import logo from './assets/logo.png';
 export default function App() {
   return (
     <div className="app">
-      <header className="nav container">
-        {/* Logo */}
-        <div
-          className="logo"
-          style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}
-        >
-          <img
-            src={logo}
-            alt="Amar Seva Sangam USA"
-            style={{ height: '36px', width: 'auto' }}
-          />
-          <span>Amar Seva Sangam USA</span>
-        </div>
+      {/* Full-width navbar */}
+      <header className="nav">
+  <div className="nav-inner">
+    <div className="logo">
+      <img
+        src={logo}
+        alt="Amar Seva Sangam USA"
+        style={{ height: '36px', width: 'auto' }}
+      />
+      <span>Amar Seva Sangam USA</span>
+    </div>
 
-        {/* Navigation */}
-        <nav
-          style={{
-            display: 'flex',
-            gap: '0.75rem',   // ✅ spacing between buttons
-            alignItems: 'center'
-          }}
-        >
-          {/* Donate button — visually distinct */}
-          <a href="#donate" className="btn small donate-btn">
-            Donate Now
-          </a>
+    <nav className="nav-actions">
+      <a href="#donate" className="btn small donate-btn">
+        Donate Now
+      </a>
+      <a href="#signup" className="btn small invert">
+        Sign Up
+      </a>
+    </nav>
+  </div>
+</header>
 
-          {/* Secondary action */}
-          <a href="#signup" className="btn small invert">
-            Sign Up
-          </a>
-        </nav>
-      </header>
 
       <main>
         <Hero />
