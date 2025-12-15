@@ -2,7 +2,7 @@ import pic1 from '../assets/pic1.png';
 
 export default function Hero() {
   return (
-    <section className="hero container">
+    <section className="hero container-wide">
       <div className="hero-inner">
         <h1>Amar Seva Sangam USA Chapter</h1>
         <p className="tagline">Empowering Persons with Disabilities</p>

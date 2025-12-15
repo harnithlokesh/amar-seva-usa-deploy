@@ -6,7 +6,7 @@ import Donate from './components/Donate';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
 import ContactPanel from './components/ContactPanel';
-
+import President from './components/President';
 
 
 
@@ -51,6 +51,7 @@ const [contactOpen, setContactOpen] = useState(false);
       <main>
         <Hero />
         <About />
+        <President />
         <Donate />
         <Signup />
       </main>

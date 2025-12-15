@@ -29,7 +29,7 @@ export default function Donate() {
   };
 
   return (
-    <section id="donate" className="donate container">
+    <section id="donate" className="donate container-wide">
       <h2 style={{ textAlign: 'center' }}>Support Our Mission</h2>
 
       {/* Donation impact cards */}

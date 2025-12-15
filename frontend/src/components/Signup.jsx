@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import pic3 from '../assets/pic3.png';
+import slide1 from '../assets/slide1.png';
+import slide2 from '../assets/slide2.png';
+import slide3 from '../assets/slide3.png';
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -14,11 +17,39 @@ export default function Signup() {
   const apiBase =
     import.meta.env.VITE_API_URL || 'http://127.0.0.1:4000';
 
+  const slides = [
+    {
+      img: slide1,
+      text: 'Empowering children and adults with disabilities since 1981'
+    },
+    {
+      img: slide2,
+      text: 'Community-driven care, education, and rehabilitation'
+    },
+    {
+      img: slide3,
+      text: 'Your support helps create inclusive futures'
+    }
+  ];
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide(i => (i + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () =>
+    setActiveSlide(i => (i + 1) % slides.length);
+
+  const prevSlide = () =>
+    setActiveSlide(i => (i - 1 + slides.length) % slides.length);
+
   const handleChange = e => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async e => {
@@ -36,25 +67,24 @@ export default function Signup() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Subscription failed');
+        throw new Error();
       }
 
-      setStatus('Thank you for subscribing!');
+      setStatus('success');
       setForm({ name: '', email: '', interests: '' });
-    } catch (err) {
-      console.error(err);
-      setStatus('Something went wrong. Please try again.');
+    } catch {
+      setStatus('error');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="signup" className="signup container">
-      {/* Newsletter banner image */}
+    <section id="signup" className="signup container-wide">
+      {/* Banner */}
       <img
         src={pic3}
-        alt="Community members engaging with programs, events, and volunteer opportunities"
+        alt="Community members engaging with programs"
         className="signup-media"
       />
 
@@ -64,45 +94,99 @@ export default function Signup() {
         opportunities.
       </p>
 
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
+      {/* TWO COLUMN LAYOUT */}
+      <div className="signup-layout">
 
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        {/* LEFT — CAROUSEL */}
+        <div className="signup-left">
+          <div className="signup-carousel">
+            <img
+              src={slides[activeSlide].img}
+              alt=""
+              className="carousel-image"
+            />
 
-        <label>
-          Interests (optional)
-          <input
-            type="text"
-            name="interests"
-            value={form.interests}
-            onChange={handleChange}
-          />
-        </label>
+            <p className="carousel-text">
+              {slides[activeSlide].text}
+            </p>
 
-        <button type="submit" className="btn primary" disabled={loading}>
-          {loading ? 'Submitting…' : 'Subscribe'}
-        </button>
+            <button
+              type="button"
+              className="carousel-btn left"
+              onClick={prevSlide}
+              aria-label="Previous slide"
+            >
+              ‹
+            </button>
 
-        {status && <div className="muted">{status}</div>}
-      </form>
+            <button
+              type="button"
+              className="carousel-btn right"
+              onClick={nextSlide}
+              aria-label="Next slide"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+
+        {/* RIGHT — FORM / SUCCESS */}
+        <div className="signup-right">
+          {status === 'success' ? (
+            <div className="success-box" role="status">
+              <h3>Message sent 🎉</h3>
+              <p>
+                Thank you for subscribing. We’ll keep you updated on programs,
+                events, and volunteer opportunities.
+              </p>
+            </div>
+          ) : (
+            <form className="signup-form" onSubmit={handleSubmit}>
+              <label>
+                Name
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label>
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label>
+                Interests (optional)
+                <input
+                  type="text"
+                  name="interests"
+                  value={form.interests}
+                  onChange={handleChange}
+                />
+              </label>
+
+              <button type="submit" className="btn primary" disabled={loading}>
+                {loading ? 'Submitting…' : 'Subscribe'}
+              </button>
+
+              {status === 'error' && (
+                <div className="error">
+                  Something went wrong. Please try again.
+                </div>
+              )}
+            </form>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

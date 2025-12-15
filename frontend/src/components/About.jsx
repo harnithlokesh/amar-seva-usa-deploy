@@ -2,7 +2,7 @@ import logo from '../assets/logo.png';
 
 export default function About() {
   return (
-    <section className="about container">
+    <section className="about container-wide">
       <div className="about-layout">
         <div>
           <h2>About Us</h2>
