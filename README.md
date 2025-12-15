@@ -1,211 +1,96 @@
-# React + Vite
+Amar Seva Sangam USA – Launch Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, modern launch website for Amar Seva Sangam USA, built to support donations and collect subscriber information with a nonprofit-friendly design.
 
-Currently, two official plugins are available:
+FEATURES
+- Light blue and beige pastel UI
+- Donation section (ready for Zeffy integration)
+- Email subscription form (name, email, interests)
+- Admin-protected endpoints to view and export subscribers
+- Fully responsive layout
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+TECH STACK
+Frontend:
+- React
+- Vite
+- Custom CSS
 
-## React Compiler
+Backend:
+- Node.js
+- Express
+- Local JSON storage (subscribers.json)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-
-📘 Amar Seva Sangam USA – Launch Page
-
-A minimal, modern, responsive launch website for Amar Seva Sangam USA, featuring a donation section, subscriber sign-up system, and soft pastel UI.
-Built using:
-
-React + Vite (Frontend)
-
-Node.js + Express (Backend)
-
-Local JSON storage for subscribers
-
-Ready for Zeffy donation integration (link or modal embed)
-
-🌐 Live Features
-✅ Light Blue + Beige Pastel UI
-
-Clean nonprofit-friendly aesthetic.
-
-✅ About Section
-
-Intro to Amar Seva Sangam USA chapter.
-
-✅ Donate Section
-
-Currently includes a button placeholder → ready for Zeffy Checkout URL.
-
-✅ Email Subscription Form
-
-Collects:
-
-Name
-
-Email
-
-Interests
-
-Data is stored securely on the backend.
-
-✅ Admin-Protected Endpoints
-
-Using Basic Auth:
-
-View subscribers (/api/subscribers)
-
-Export CSV (/api/subscribers.csv)
-
-📁 Project Structure
+PROJECT STRUCTURE
 amar-seva-usa/
-│
-├── backend/
-│   ├── server.js
-│   ├── subscribers.json
-│   ├── package.json
-│   └── README.md (optional)
-│
-└── frontend/
-    ├── index.html
-    ├── package.json
-    ├── .env
-    └── src/
-        ├── App.jsx
-        ├── main.jsx
-        ├── styles.css
-        └── components/
-            ├── Hero.jsx
-            ├── About.jsx
-            ├── Donate.jsx
-            ├── Signup.jsx
-            └── Footer.jsx
+- backend/
+  - server.js
+  - subscribers.json
+  - package.json
+- frontend/
+  - index.html
+  - package.json
+  - .env
+  - src/
 
-🚀 Getting Started
-1️⃣ Install dependencies
-Backend
+GETTING STARTED
+
+Install Dependencies
+
+Backend:
 cd backend
 npm install
 
-Frontend
+Frontend:
 cd frontend
 npm install
 
-2️⃣ Environment Variables
-Frontend — frontend/.env
+ENVIRONMENT VARIABLES
+
+Frontend (.env):
 VITE_API_URL=http://localhost:4000
-# (Optional) Zeffy form URL:
-# VITE_ZEFFY_URL=https://your-zeffy-form-url
 
-Backend — Admin Login (local only)
-
-Inside PowerShell terminal before starting server:
-
+Backend (PowerShell):
 $env:ADMIN_USER="admin"
 $env:ADMIN_PASS="12345"
 
-3️⃣ Running the project
-Start Backend
+RUNNING THE PROJECT
+
+Start Backend:
 cd backend
 npm run dev
 
-
-The backend will show:
-
-Backend listening on http://localhost:4000
-Admin user: admin
-
-Start Frontend
+Start Frontend:
 cd frontend
 npm run dev
 
+SUBSCRIBER MANAGEMENT
 
-Runs at:
-
-http://localhost:5173
-
-
-Frontend will now be able to send requests to the backend.
-
-📬 Subscriber Management
-➤ POST Subscribe
-
-From the website form, data goes to:
-
+POST Subscribe:
 POST /api/subscribe
+Saved in backend/subscribers.json
 
-
-Saved in:
-
-backend/subscribers.json
-
-➤ Admin: View Subscribers
+Admin View:
 curl -u admin:12345 http://localhost:4000/api/subscribers
 
-➤ Admin: Export CSV
+Admin Export CSV:
 curl -u admin:12345 http://localhost:4000/api/subscribers.csv -o subscribers.csv
 
-💳 Zeffy Donation Integration (Later)
+DONATION INTEGRATION
 
-When you receive the Zeffy form link:
-
-Option A — Simple Link (Recommended)
-
-Add to .env:
-
+Add Zeffy link to frontend/.env:
 VITE_ZEFFY_URL=https://your-zeffy-form-url
 
+PRODUCTION BUILD
 
-The Donate button will open Zeffy checkout in a new tab.
-
-Option B — Embedded Modal / Iframe
-
-You may embed using Zeffy’s provided script or iframe snippet.
-Frontend already supports switching easily.
-
-🎨 UI Design Notes
-
-Light pastel blue background
-
-Warm beige section boxes
-
-Soft shadows, rounded corners
-
-Responsive layout for mobile & desktop
-
-Clean nonprofit aesthetic
-
-📦 Production Build
-Frontend
-cd frontend
+Frontend:
 npm run build
 
-Backend
-
-Deploy anywhere (Render / Railway / AWS / Heroku), or run locally:
-
+Backend:
 node server.js
 
+FUTURE ENHANCEMENTS
+- Zeffy modal integration
+- Admin dashboard
+- Google Sheets sync
+- Email marketing integration
 
-Make sure to set environment variables on your hosting provider.
-
-🤝 Contributing / Future Features
-
-Suggested enhancements:
-
-Zeffy modal integration
-
-Admin dashboard UI (React)
-
-Google Sheets sync for subscribers
-
-Mailchimp integration
-
-Animations / scroll effects
-
-Mobile hamburger menu
