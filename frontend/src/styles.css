@@ -599,3 +599,67 @@ h3{
 .donate-cta:not(:disabled):hover {
   animation: none;
 }
+
+
+/* ----------------------------------------
+   Contact Panel (Non-blocking)
+---------------------------------------- */
+.contact-panel {
+  position: fixed;
+  top: 0;
+  right: -360px;
+  width: 340px;
+  height: 100vh;
+  background: var(--beige);
+  box-shadow: -12px 0 30px rgba(0,0,0,0.12);
+  padding: 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 200;
+}
+
+.contact-panel.open {
+  right: 0;
+}
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Mobile: bottom sheet */
+@media (max-width: 700px) {
+  .contact-panel {
+    width: 100%;
+    height: auto;
+    bottom: -100%;
+    top: auto;
+    right: 0;
+    border-radius: 16px 16px 0 0;
+    transition: bottom 0.3s ease;
+  }
+
+  .contact-panel.open {
+    bottom: 0;
+  }
+}
