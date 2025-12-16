@@ -13,9 +13,6 @@ import { useMobileNavMini } from './hooks/useMobileNavMini';
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
 
-  // Simple path check (no full router)
-  const isGetInTouchPage = window.location.pathname === '/get-in-touch';
-
   // Scroll reveal animations
   useScrollReveal();
 
@@ -29,11 +26,7 @@ export default function App() {
 
   const handleMiniLinkClick = (href) => {
     closeMiniMenu();
-    if (href.startsWith('http')) {
-      window.location.href = href;
-    } else {
-      window.location.href = href; // handles hash and /get-in-touch
-    }
+    window.location.href = href;
   };
 
   return (
@@ -57,10 +50,6 @@ export default function App() {
           <nav className="nav-actions">
             <a href="#donate" className="btn small donate-btn">
               Donate Now
-            </a>
-
-            <a href="/get-in-touch" className="btn small invert">
-              Get in touch
             </a>
 
             <button
@@ -97,13 +86,6 @@ export default function App() {
 
               <button
                 className="mini-nav-menu-item"
-                onClick={() => handleMiniLinkClick('/get-in-touch')}
-              >
-                Get in touch
-              </button>
-
-              <button
-                className="mini-nav-menu-item"
                 onClick={() => {
                   closeMiniMenu();
                   setContactOpen(true);
@@ -117,36 +99,24 @@ export default function App() {
       )}
 
       <main>
-        {/* Home content when NOT on /get-in-touch */}
-        {!isGetInTouchPage && (
-          <>
-            <section className="reveal-on-scroll">
-              <Hero />
-            </section>
-
-            <section className="reveal-on-scroll">
-              <About />
-            </section>
-
-            <section className="reveal-on-scroll" id="president">
-              <President />
-            </section>
-
-            <section className="reveal-on-scroll" id="donate">
-              <Donate />
-            </section>
-          </>
-        )}
-
-        {/* Dedicated Get in Touch page reusing Signup component */}
-        {isGetInTouchPage && (
-          <section
-            className="container-wide reveal-on-scroll"
-            style={{ marginTop: '2.5rem' }}
-          >
-            <Signup />
+        {/* Home content only */}
+        <>
+          <section className="reveal-on-scroll">
+            <Hero />
           </section>
-        )}
+
+          <section className="reveal-on-scroll">
+            <About />
+          </section>
+
+          <section className="reveal-on-scroll" id="president">
+            <President />
+          </section>
+
+          <section className="reveal-on-scroll" id="donate">
+            <Donate />
+          </section>
+        </>
       </main>
 
       <Footer onContactClick={() => setContactOpen(true)} />
