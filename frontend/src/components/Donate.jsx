@@ -1,31 +1,21 @@
-import { useState } from 'react';
 import {
   GraduationCap,
   Stethoscope,
   Accessibility,
-  Users
+  Users,
 } from 'lucide-react';
 
 export default function Donate() {
-  const zeffyLinks = {
-    oneTime: import.meta.env.VITE_ZEFFY_ONETIME,
-    monthly: import.meta.env.VITE_ZEFFY_MONTHLY,
-    custom: import.meta.env.VITE_ZEFFY_CUSTOM
-  };
-
-  // No option selected by default
-  const [type, setType] = useState(null);
+  // Single Zeffy link (configure in your .env file)
+  const zeffyLink = import.meta.env.VITE_ZEFFY_DONATE_URL;
 
   const handleDonate = () => {
-    if (!type) return;
-
-    const link = zeffyLinks[type];
-    if (!link) {
+    if (!zeffyLink) {
       alert('Zeffy donation link not configured');
       return;
     }
 
-    window.open(link, '_blank', 'noopener,noreferrer');
+    window.open(zeffyLink, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -38,10 +28,10 @@ export default function Donate() {
           <div className="card-media health">
             <Stethoscope size={28} />
           </div>
-          <h3>Therapies & Healthcare</h3>
+          <h3>Therapies &amp; Healthcare</h3>
           <p>
-            Access to essential therapies, rehabilitation services,
-            and ongoing medical support.
+            Access to essential therapies, rehabilitation services, and ongoing
+            medical support.
           </p>
         </div>
 
@@ -51,8 +41,8 @@ export default function Donate() {
           </div>
           <h3>Inclusive Education</h3>
           <p>
-            Quality education programs designed to meet diverse learning
-            needs and abilities.
+            Quality education programs designed to meet diverse learning needs
+            and abilities.
           </p>
         </div>
 
@@ -62,8 +52,8 @@ export default function Donate() {
           </div>
           <h3>Mobility Aids</h3>
           <p>
-            Assistive devices that promote independence, movement,
-            and everyday accessibility.
+            Assistive devices that promote independence, movement, and everyday
+            accessibility.
           </p>
         </div>
 
@@ -73,45 +63,17 @@ export default function Donate() {
           </div>
           <h3>Community Programs</h3>
           <p>
-            Inclusive initiatives that build confidence, participation,
-            and long-term empowerment.
+            Inclusive initiatives that build confidence, participation, and
+            long-term empowerment.
           </p>
         </div>
       </div>
 
-      {/* Donation type selection */}
-      <div
-        className="donation-options"
-        style={{ justifyContent: 'center', marginTop: '2rem' }}
-      >
-        <button
-          className={`btn ${type === 'oneTime' ? 'active' : ''}`}
-          onClick={() => setType('oneTime')}
-        >
-          One-time donation
-        </button>
-
-        <button
-          className={`btn ${type === 'monthly' ? 'active' : ''}`}
-          onClick={() => setType('monthly')}
-        >
-          Monthly recurring donation
-        </button>
-
-        <button
-          className={`btn ${type === 'custom' ? 'active' : ''}`}
-          onClick={() => setType('custom')}
-        >
-          Custom amount
-        </button>
-      </div>
-
-      {/* Donate CTA */}
-      <div style={{ textAlign: 'center', marginTop: '1.8rem' }}>
+      {/* Single Donate CTA */}
+      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
         <button
           className="btn primary donate-cta"
           onClick={handleDonate}
-          disabled={!type}
         >
           Donate Now
         </button>

@@ -8,51 +8,50 @@ export default function Signup() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    interests: ''
+    interests: '',
   });
 
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const apiBase =
-    import.meta.env.VITE_API_URL || 'http://127.0.0.1:4000';
+  const apiBase = import.meta.env.VITE_API_URL || 'http://127.0.0.1:4000';
 
   const slides = [
     {
       img: slide1,
-      text: 'Empowering children and adults with disabilities since 1981'
+      text: 'Empowering children and adults with disabilities since 1981',
     },
     {
       img: slide2,
-      text: 'Community-driven care, education, and rehabilitation'
+      text: 'Community-driven care, education, and rehabilitation',
     },
     {
       img: slide3,
-      text: 'Your support helps create inclusive futures'
-    }
+      text: 'Your support helps create inclusive futures',
+    },
   ];
 
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveSlide(i => (i + 1) % slides.length);
+      setActiveSlide((i) => (i + 1) % slides.length);
     }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   const nextSlide = () =>
-    setActiveSlide(i => (i + 1) % slides.length);
+    setActiveSlide((i) => (i + 1) % slides.length);
 
   const prevSlide = () =>
-    setActiveSlide(i => (i - 1 + slides.length) % slides.length);
+    setActiveSlide((i) => (i - 1 + slides.length) % slides.length);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus('');
@@ -61,7 +60,7 @@ export default function Signup() {
       const res = await fetch(`${apiBase}/api/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+        body: JSON.stringify(form),
       });
 
       const data = await res.json();
@@ -80,7 +79,7 @@ export default function Signup() {
   };
 
   return (
-    <section id="signup" className="signup container-wide">
+    <section className="signup container-wide">
       {/* Banner */}
       <img
         src={pic3}
@@ -88,15 +87,14 @@ export default function Signup() {
         className="signup-media"
       />
 
-      <h2>Stay Updated</h2>
+      <h2>Get in touch</h2>
       <p>
-        Sign up to receive updates on our programs, events, and volunteer
-        opportunities.
+        Share your details and interests so we can reach out with relevant
+        updates about our programs, events, and volunteer opportunities.
       </p>
 
       {/* TWO COLUMN LAYOUT */}
       <div className="signup-layout">
-
         {/* LEFT — CAROUSEL */}
         <div className="signup-left">
           <div className="signup-carousel">
@@ -136,8 +134,8 @@ export default function Signup() {
             <div className="success-box" role="status">
               <h3>Message sent 🎉</h3>
               <p>
-                Thank you for subscribing. We’ll keep you updated on programs,
-                events, and volunteer opportunities.
+                Thank you for getting in touch. We’ll keep you updated on
+                programs, events, and volunteer opportunities.
               </p>
             </div>
           ) : (
@@ -174,8 +172,12 @@ export default function Signup() {
                 />
               </label>
 
-              <button type="submit" className="btn primary" disabled={loading}>
-                {loading ? 'Submitting…' : 'Subscribe'}
+              <button
+                type="submit"
+                className="btn primary"
+                disabled={loading}
+              >
+                {loading ? 'Submitting…' : 'Send'}
               </button>
 
               {status === 'error' && (

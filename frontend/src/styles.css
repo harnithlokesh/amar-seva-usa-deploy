@@ -1,16 +1,16 @@
 /* Import must be at the top for Vite/PostCSS */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap'); /* [web:12] */
 
 
 /* ----------------------------------------
    Pastel Palette (Your Chosen Colors)
    ---------------------------------------- */
-:root{
-  --bg-blue: #9fd9f4;        /* main page background (light blue) */
-  --bg-blue-soft: #f0faff;   /* slight gradient variation */
+:root {
+  --bg-blue: #9fd9f4;         /* main page background (light blue) */
+  --bg-blue-soft: #f0faff;    /* slight gradient variation */
 
-  --beige: #f7f0e6;          /* box backgrounds */
-  --beige-light: #fff7ee;    /* lighter beige for depth */
+  --beige: #f7f0e6;           /* box backgrounds */
+  --beige-light: #fff7ee;     /* lighter beige for depth */
   --white: #ffffff;
 
   --accent-blue: #66b8ff;
@@ -25,26 +25,30 @@
 
   --shadow-soft: 0 10px 28px rgba(0,0,0,0.05);
   --shadow-subtle: 0 4px 14px rgba(0,0,0,0.04);
-  /* Donate green (CTA) */
---donate-green: #5fbf8e;
---donate-green-dark: #2f8f67;
---donate-green-faded: rgba(95,191,142,0.45);
 
+  /* Donate green (CTA) */
+  --donate-green: #5fbf8e;
+  --donate-green-dark: #2f8f67;
+  --donate-green-faded: rgba(95,191,142,0.45);
 }
+
 
 /* ----------------------------------------
    Base Layout
    ---------------------------------------- */
-* { box-sizing: border-box; }
-body{
+* {
+  box-sizing: border-box;
+}
+
+body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;  /* [web:5] */
   background: linear-gradient(180deg, var(--bg-blue), var(--bg-blue-soft));
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
 
-.container{
+.container {
   max-width: 1060px;
   margin: 0 auto;
   padding: 2rem;
@@ -65,9 +69,11 @@ body{
 
 
 /* ----------------------------------------
-   Typography Refinement (Not Flashy)
+   Typography Refinement
    ---------------------------------------- */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Source Serif 4', serif;
   letter-spacing: -0.01em;
 }
@@ -76,26 +82,15 @@ h1 {
   font-weight: 700;
 }
 
-h2, h3 {
+h2,
+h3 {
   font-weight: 600;
 }
 
 
 /* ----------------------------------------
-   Navigation
+   Navigation – Glass + Neon
    ---------------------------------------- */
-/* ========================================
-   Full-width Navbar (Final, Stable)
-   ======================================== */
-
-/* ========================================
-   Glassmorphism Navbar with Neon Border
-   ======================================== */
-
-/* ========================================
-   Blue-Tinted Glass Navbar + Neon Border
-   ======================================== */
-
 .nav {
   width: 100%;
   position: sticky;
@@ -189,7 +184,7 @@ h2, h3 {
   transform: translateY(-1px);
 }
 
-/* Mobile layout */
+/* Mobile navbar layout */
 @media (max-width: 768px) {
   .nav-inner {
     flex-direction: column;
@@ -201,62 +196,85 @@ h2, h3 {
   }
 }
 
-
-
-.logo{
-  font-weight:700;
-  font-size:1.1rem;
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
   color: var(--accent-blue-dark);
 }
+
 
 /* ----------------------------------------
    Buttons
    ---------------------------------------- */
-.btn{
-  padding:.6rem 1rem;
+.btn {
+  padding: .6rem 1rem;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   background: var(--white);
   color: var(--text);
   box-shadow: var(--shadow-subtle);
-  cursor:pointer;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  transition: all .15s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all .18s ease;
 }
 
-.btn:hover{
+.btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 23, 36, 0.12);
 }
 
-.btn.primary{
+.btn.primary {
   background: var(--accent-blue);
-  color:white;
+  color: white;
   box-shadow: 0 6px 20px rgba(102,184,255,0.25);
 }
 
-.btn.small{ padding:.4rem .7rem; font-size:.9rem; }
+.btn.small {
+  padding: .4rem .7rem;
+  font-size: .9rem;
+}
+
 
 /* ----------------------------------------
    Hero
    ---------------------------------------- */
-.hero{ padding-top: 3rem; }
+.hero {
+  padding-top: 3rem;
+}
 
-.hero-inner{
+.hero-inner {
   background: var(--beige);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Subtle gradient highlight in hero */
+.hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top left,
+    rgba(255,255,255,0.35),
+    transparent 55%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Main hero media (single large image) */
 .hero-media {
   margin-top: 1.5rem;
   width: 100%;
   height: 220px;
 
-  object-fit: cover;           /* 👈 desktop looks good */
+  object-fit: cover;
   object-position: center;
 
   border-radius: 16px;
@@ -264,43 +282,108 @@ h2, h3 {
   background-color: var(--beige);
 }
 
-/* Mobile override */
+/* Mobile override for main hero image */
 @media (max-width: 600px) {
   .hero-media {
-    object-fit: contain;       /* 👈 mobile shows full image */
+    object-fit: contain;
   }
 }
 
-.hero h1{
-  margin:0;
+.hero h1 {
+  margin: 0;
   font-size: clamp(1.7rem, 2.5vw, 2.4rem);
   color: var(--accent-blue-dark);
 }
 
-.tagline{
+.tagline {
   color: var(--accent-blue-dark);
-  font-weight:600;
-  margin-top:.4rem;
+  font-weight: 600;
+  margin-top: .4rem;
 }
 
-.cta-row{
-  display:flex;
-  gap:.75rem;
-  margin:1rem 0 .5rem 0;
-  flex-wrap:wrap;
+.cta-row {
+  display: flex;
+  gap: .75rem;
+  margin: 1rem 0 .5rem 0;
+  flex-wrap: wrap;
 }
 
-.hero-intro{
+.hero-intro {
   color: var(--muted);
   max-width: 70ch;
 }
+
+
+/* ----------------------------------------
+   Hero – 3-Image Glass Carousel
+   ---------------------------------------- */
+.hero-carousel-row {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3 images per row on desktop */
+  gap: 1.2rem;
+}
+
+/* Individual glass cards – slightly smaller inside hero */
+.hero-glass-card {
+  height: 180px;  /* reduced from 220px */
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  border-radius: 18px;
+  padding: 0.55rem;  /* slightly smaller inner padding */
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+
+  overflow: hidden; /* prevents image overflow */
+  transform-origin: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-glass-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(15, 23, 36, 0.18);
+}
+
+/* Images inside glass cards */
+.hero-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 12px;
+  display: block;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 900px) {
+  .hero-carousel-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column + slightly shorter cards */
+@media (max-width: 600px) {
+  .hero-carousel-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-glass-card {
+    height: 160px;
+  }
+}
+
 
 /* ----------------------------------------
    Section Boxes (Beige)
    ---------------------------------------- */
 section.about,
 section.donate,
-section.signup{
+section.signup {
   margin-top: 2.5rem;
   background: var(--beige);
   padding: 2rem;
@@ -309,22 +392,26 @@ section.signup{
   border: 1px solid rgba(0,0,0,0.04);
 }
 
-.about-layout{
-  display:grid;
+.about-layout {
+  display: grid;
   grid-template-columns: 1.1fr .9fr;
-  gap:1.5rem;
+  gap: 1.5rem;
 }
 
-.about-media{
+.about-media {
   height: 300px;
 }
 
-@media(max-width:850px){
-  .about-layout{
+@media (max-width: 850px) {
+  .about-layout {
     grid-template-columns: 1fr;
   }
 }
 
+
+/* ----------------------------------------
+   Signup Media
+   ---------------------------------------- */
 .signup-media {
   width: calc(100% + 4rem);   /* cancel section padding */
   margin-left: -2rem;
@@ -363,69 +450,69 @@ section.signup{
   margin: 0 0 0.4rem 0;
 }
 
-
-h2{
-  margin:0 0 .6rem 0;
+h2 {
+  margin: 0 0 .6rem 0;
   color: var(--accent-blue-dark);
-  font-size:1.4rem;
+  font-size: 1.4rem;
 }
 
-h3{
-  margin:.4rem 0;
-  font-size:1.1rem;
+h3 {
+  margin: .4rem 0;
+  font-size: 1.1rem;
   color: var(--accent-blue-dark);
 }
+
 
 /* ----------------------------------------
    Donate Section
    ---------------------------------------- */
-.donation-options{
-  display:flex;
-  gap:.5rem;
-  margin-top:.6rem;
-  flex-wrap:wrap;
+.donation-options {
+  display: flex;
+  gap: .5rem;
+  margin-top: .6rem;
+  flex-wrap: wrap;
 }
 
-.donation-options .btn{
+.donation-options .btn {
   background: var(--beige-light);
   color: var(--accent-blue-dark);
   border: 1px solid rgba(0,0,0,0.05);
 }
 
+
 /* ----------------------------------------
    Signup Section
    ---------------------------------------- */
-.signup-form{
-  display:grid;
-  gap:.8rem;
-  max-width:500px;
+.signup-form {
+  display: grid;
+  gap: .8rem;
+  max-width: 500px;
 }
 
-.signup-form label{
-  display:flex;
-  flex-direction:column;
-  gap:.4rem;
-  font-size:.95rem;
+.signup-form label {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  font-size: .95rem;
   color: var(--muted);
 }
 
-.signup-form input{
-  padding:.7rem .8rem;
+.signup-form input {
+  padding: .7rem .8rem;
   border-radius: var(--radius-md);
   border: 1px solid rgba(0,0,0,0.08);
   background: var(--beige-light);
-  font-size:.95rem;
+  font-size: .95rem;
   transition: all .15s ease;
   box-shadow: var(--shadow-subtle);
 }
 
-.signup-form input:focus{
+.signup-form input:focus {
   border-color: var(--accent-blue);
   box-shadow: 0 0 0 3px rgba(102,184,255,0.25);
-  outline:none;
+  outline: none;
 }
 
-/* Signup two-column layout */
 /* Signup two-column layout */
 .signup-layout {
   display: grid;
@@ -443,25 +530,33 @@ h3{
 
 
 /* Status text */
-.muted{ color: #2f855a; font-weight:600; margin-top:.6rem; }
-.error{ color: #c53030; font-weight:600; margin-top:.6rem; }
+.muted {
+  color: #2f855a;
+  font-weight: 600;
+  margin-top: .6rem;
+}
+
+.error {
+  color: #c53030;
+  font-weight: 600;
+  margin-top: .6rem;
+}
+
 
 /* ----------------------------------------
    Footer
    ---------------------------------------- */
-.footer{
-  margin-top:3rem;
-  padding:1.2rem 0;
+.footer {
+  margin-top: 3rem;
+  padding: 1.2rem 0;
   border-top: 1px solid rgba(0,0,0,0.05);
   color: var(--muted);
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-/* ----------------------------------------
-   Footer – Mobile Fix
----------------------------------------- */
+/* Footer – Mobile Fix */
 @media (max-width: 700px) {
   .footer {
     flex-direction: column;
@@ -485,18 +580,29 @@ h3{
 
 
 /* ----------------------------------------
-   Responsive
+   Responsive Global Tweaks
    ---------------------------------------- */
-@media(max-width: 850px){
-  .container{ padding:1.2rem; }
-  .hero-inner{ padding:1.3rem; }
-  .footer{ flex-direction:column; align-items:flex-start; gap:.6rem; }
+@media (max-width: 850px) {
+  .container {
+    padding: 1.2rem;
+  }
+
+  .hero-inner {
+    padding: 1.3rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .6rem;
+  }
 }
+
 
 /* ----------------------------------------
    Donate Grid (Card Layout)
    ---------------------------------------- */
-.donate-grid{
+.donate-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.2rem;
@@ -509,62 +615,65 @@ h3{
   }
 }
 
-
-.donate-card{
+.donate-card {
   background: var(--white);
   padding: 1.4rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-subtle);
   border: 1px solid rgba(0,0,0,0.04);
   text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, translate 0.2s ease;
 }
 
-.donate-card .card-media{
+.donate-card .card-media {
   width: 64px;
   height: 64px;
   margin: 0 auto .7rem;
   border-radius: 50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Individual icon themes */
-.card-media.education{
+.card-media.education {
   background: rgba(102,184,255,0.25);
   color: #2b6ea3;
 }
 
-.card-media.health{
+.card-media.health {
   background: rgba(248,113,113,0.2);
   color: #b91c1c;
 }
 
-.card-media.skills{
+.card-media.skills {
   background: rgba(250,204,21,0.25);
   color: #92400e;
 }
 
-.card-media.community{
+.card-media.community {
   background: rgba(52,211,153,0.25);
   color: #065f46;
 }
 
-
-.donate-card h3{
+.donate-card h3 {
   margin-bottom: .4rem;
 }
 
-.donate-card p{
+.donate-card p {
   font-size: .95rem;
   color: var(--muted);
 }
 
+.donate-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(15, 23, 36, 0.16);
+}
+
+
 /* ----------------------------------------
    Donate Buttons – Interaction States
    ---------------------------------------- */
-
 /* Donation option hover */
 .donation-options .btn:hover {
   background: var(--accent-blue);
@@ -611,12 +720,10 @@ h3{
 }
 
 
-
-
 /* ----------------------------------------
    Image Placeholders (Temporary)
    ---------------------------------------- */
-.img-placeholder{
+.img-placeholder {
   background:
     linear-gradient(
       135deg,
@@ -625,19 +732,19 @@ h3{
     );
   border: 1px dashed rgba(43,110,163,0.35);
   border-radius: var(--radius-md);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent-blue-dark);
-  font-weight:600;
-  text-align:center;
+  font-weight: 600;
+  text-align: center;
   box-shadow: var(--shadow-subtle);
 }
 
-/* ===============================
-   Donate Section Animations
-   =============================== */
 
+/* ----------------------------------------
+   Donate Section Animations
+   ---------------------------------------- */
 /* Fade-up animation */
 @keyframes fadeUp {
   from {
@@ -672,8 +779,8 @@ h3{
 
 /* Donate CTA pulse when enabled */
 @keyframes softPulse {
-  0% { box-shadow: 0 0 0 0 rgba(95,191,142,0.35); }
-  70% { box-shadow: 0 0 0 10px rgba(95,191,142,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(95,191,142,0.35); }
+  70%  { box-shadow: 0 0 0 10px rgba(95,191,142,0); }
   100% { box-shadow: 0 0 0 0 rgba(95,191,142,0); }
 }
 
@@ -689,7 +796,7 @@ h3{
 
 /* ----------------------------------------
    Contact Panel (Non-blocking)
----------------------------------------- */
+   ---------------------------------------- */
 .contact-panel {
   position: fixed;
   top: 0;
@@ -752,9 +859,8 @@ h3{
 
 
 /* ----------------------------------------
-   Signup Carousel
----------------------------------------- */
-/* Carousel */
+   Signup Carousel (Side Panel)
+   ---------------------------------------- */
 .signup-carousel {
   position: relative;
   height: 280px;
@@ -795,16 +901,22 @@ h3{
   box-shadow: var(--shadow-subtle);
 }
 
-.carousel-btn.left { left: 10px; }
-.carousel-btn.right { right: 10px; }
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
 
 .carousel-btn:hover {
   background: white;
 }
 
+
 /* ----------------------------------------
    President Section
----------------------------------------- */
+   ---------------------------------------- */
 .president {
   margin-top: 2.5rem;
   background: var(--beige);
@@ -814,55 +926,171 @@ h3{
   border: 1px solid rgba(0,0,0,0.04);
 }
 
+/* Centered column layout */
 .president-layout {
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr; /* text | photo */
-  gap: 2rem;
-  align-items: start;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Circular photo */
+.president-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 70%;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  margin-bottom: 1.5rem;
 }
 
 .president-photo img {
   width: 100%;
-  border-radius: 16px;
+  height: 100%;
   object-fit: cover;
-  box-shadow: var(--shadow-subtle);
+}
+
+/* Text below, paragraph wise */
+.president-content {
+  width: 100%;
+  max-width: 720px;
 }
 
 .president-content p {
   color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 0.8rem;
-}
-
-.president-name {
-  margin-top: 1rem;
-  color: var(--accent-blue-dark);
-}
-
-/* Mobile */
-@media (max-width: 850px) {
-  .president-layout {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .president-photo img {
-    margin: 0 auto;
-  }
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
 }
 
 .president-org {
   color: var(--accent-blue-dark);
   font-weight: 600;
   margin-bottom: 0.8rem;
-}
-
-.president-content p {
-  line-height: 1.65;
-  margin-bottom: 0.9rem;
+  text-align: center;
 }
 
 .president-signoff {
   margin-top: 1.2rem;
   color: var(--accent-blue-dark);
+}
+
+/* Optional: center heading */
+.president-content h2 {
+  text-align: center;
+}
+
+
+/* ----------------------------------------
+   Scroll Reveal Animations
+   ---------------------------------------- */
+/* Hidden state for sections/cards */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+/* When in view */
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ----------------------------------------
+   Mobile mini nav toggle
+   ---------------------------------------- */
+
+/* Hide full nav only on mobile when class applied */
+@media (max-width: 768px) {
+  .nav.nav-hidden-mobile {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav {
+    transition: transform 0.3s ease;
+  }
+
+  .mini-nav-btn {
+    position: fixed;
+    bottom: 1.4rem;
+    right: 1.4rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(15, 23, 36, 0.9);
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(15, 23, 36, 0.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    z-index: 80;
+  }
+
+  .mini-nav-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background: #ffffff;
+  }
+
+  .mini-nav-btn:active {
+    transform: scale(0.96);
+  }
+
+  /* Dropdown menu next to mini icon */
+  .mini-nav-menu {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 1.4rem;
+    background: rgba(15, 23, 36, 0.96);
+    border-radius: 16px;
+    padding: 0.5rem;
+    box-shadow: 0 16px 30px rgba(15, 23, 36, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    z-index: 79;
+  }
+
+  .mini-nav-menu-item {
+    border: none;
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+    text-align: left;
+    background: transparent;
+    color: #e2e8f0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .mini-nav-menu-item.primary {
+    background: var(--accent-blue);
+    color: #ffffff;
+  }
+
+  .mini-nav-menu-item:hover {
+    background: rgba(148, 163, 184, 0.25);
+  }
+
+  .mini-nav-menu-item.primary:hover {
+    background: #4ca5f3;
+  }
+}
+
+/* On tablet/desktop, never show mini nav button or menu */
+@media (min-width: 769px) {
+  .mini-nav-btn,
+  .mini-nav-menu {
+    display: none !important;
+  }
 }
