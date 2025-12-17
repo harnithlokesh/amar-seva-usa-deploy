@@ -1,6 +1,5 @@
 /* Import must be at the top for Vite/PostCSS */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap'); /* [web:12] */
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap'); /* [web:14] */
 
 
 /* ----------------------------------------
@@ -37,7 +36,6 @@
 }
 
 
-
 /* ----------------------------------------
    Base Layout
    ---------------------------------------- */
@@ -47,7 +45,7 @@
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;  /* [web:5] */
+  font-family: "Inter", sans-serif;  /* [web:17] */
   background: linear-gradient(180deg, var(--bg-blue), var(--bg-blue-soft));
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -71,7 +69,6 @@ body {
     max-width: 1480px;
   }
 }
-
 
 
 /* ----------------------------------------
@@ -106,7 +103,6 @@ h3 {
     text-align: center;
   }
 }
-
 
 
 /* ----------------------------------------
@@ -189,26 +185,55 @@ h3 {
 }
 
 
-/* Donate button — glass + subtle green glow */
+/* Donate button — glass + subtle green glow
+   (your custom neon style) */
 .nav-actions .donate-btn {
-  background: rgba(254, 71, 46, 0.22);
-  color: #703127;
+  background: rgba(255, 255, 255, 0);
+  color: #000000;
 
-  border: 1px solid rgba(187, 39, 9, 0.6);
+  border: 5px solid rgb(255, 255, 255);
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.35),
-    0 0 14px rgba(164, 125, 116, 0.45);
+    inset 0 0 0 100px rgba(98, 0, 255, 0.35),
+    0 0 200px rgba(98, 0, 255, 0.35);
 
+  padding: 2rem 3rem; /* very large CTA */
+  font-size: 0.98rem;
+  border-radius: 999px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .nav-actions .donate-btn:hover {
-  background: rgba(239, 112, 69, 0.35);
+  background: rgb(0, 204, 255);
   box-shadow:
-    0 0 18px rgba(230, 89, 64, 0.65),
-    0 0 30px rgba(237, 114, 84, 0.45);
+    0 0 30px rgb(0, 136, 255),
+    0 0 50px rgb(0, 174, 255);
   transform: translateY(-1px);
 }
+
+/* Contact Us button in navbar – reuse same border/glow */
+.nav-actions .contact-btn {
+  background: rgba(255, 255, 255, 0);
+  color: #000000;
+
+  border: 5px solid rgb(255, 255, 255);
+  box-shadow:
+    inset 0 0 0 100px rgba(98, 0, 255, 0.35),
+    0 0 200px rgba(98, 0, 255, 0.35);
+
+  padding: 2rem 3rem; /* same size as donate */
+  font-size: 0.98rem;
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.nav-actions .contact-btn:hover {
+  background: rgb(0, 204, 255);
+  box-shadow:
+    0 0 30px rgb(0, 136, 255),
+    0 0 50px rgb(0, 174, 255);
+  transform: translateY(-1px);
+}
+
 
 
 /* Mobile navbar layout */
@@ -236,7 +261,6 @@ h3 {
   font-size: 1.1rem;
   color: var(--accent-blue-dark);
 }
-
 
 
 /* ----------------------------------------
@@ -287,7 +311,6 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    Hero
    ---------------------------------------- */
@@ -305,7 +328,6 @@ h3 {
   overflow: hidden;
 }
 
-
 /* Subtle gradient highlight in hero */
 .hero-inner::before {
   content: "";
@@ -317,7 +339,6 @@ h3 {
   opacity: 0.5;
   pointer-events: none;
 }
-
 
 /* Main hero media (single large image) */
 .hero-media {
@@ -332,7 +353,6 @@ h3 {
   display: block;
   background-color: var(--beige);
 }
-
 
 /* Mobile override for main hero image */
 @media (max-width: 600px) {
@@ -385,10 +405,10 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    Hero – 3-Image Glass Carousel with buttons
    ---------------------------------------- */
+
 
 /* Wrapper that masks overflow and holds arrows */
 .hero-carousel-wrapper {
@@ -397,6 +417,7 @@ h3 {
   overflow: hidden;
 }
 
+
 /* Track that JS will translate left/right */
 .hero-carousel-row {
   display: flex;
@@ -404,6 +425,7 @@ h3 {
   transition: transform 0.35s ease-in-out; /* smooth slide */
   will-change: transform;
 }
+
 
 /* Individual glass cards */
 .hero-glass-card {
@@ -431,6 +453,7 @@ h3 {
   box-shadow: 0 18px 40px rgba(15, 23, 36, 0.18);
 }
 
+
 /* Images inside glass cards */
 .hero-carousel-img {
   width: 100%;
@@ -441,6 +464,7 @@ h3 {
   border-radius: 12px;
   display: block;
 }
+
 
 /* Carousel arrow buttons */
 .hero-carousel-btn {
@@ -480,6 +504,7 @@ h3 {
   transform: translateY(-50%) scale(0.97);
 }
 
+
 /* Hide arrows / tighten on very small screens */
 @media (max-width: 600px) {
   .hero-glass-card {
@@ -492,7 +517,6 @@ h3 {
     height: 32px;
   }
 }
-
 
 
 /* ----------------------------------------
@@ -547,7 +571,6 @@ section.signup {
     height: 210px;
   }
 }
-
 
 
 /* ----------------------------------------
@@ -613,7 +636,6 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    Donate Section
    ---------------------------------------- */
@@ -624,12 +646,15 @@ h3 {
   flex-wrap: wrap;
 }
 
+/* Base donation options,
+   INCREASED SIZE HERE */
 .donation-options .btn {
   background: var(--beige-light);
   color: var(--accent-blue-dark);
   border: 1px solid rgba(0,0,0,0.05);
+  padding: 0.7rem 1.2rem; /* was default .6rem 1rem; now bigger */
+  font-size: 0.95rem;     /* make labels slightly larger */
 }
-
 
 
 /* ----------------------------------------
@@ -665,6 +690,7 @@ h3 {
   outline: none;
 }
 
+
 /* Signup two-column layout */
 .signup-layout {
   display: grid;
@@ -682,7 +708,6 @@ h3 {
 }
 
 
-
 /* Status text */
 .muted {
   color: #2f855a;
@@ -695,7 +720,6 @@ h3 {
   font-weight: 600;
   margin-top: .6rem;
 }
-
 
 
 /* ----------------------------------------
@@ -775,6 +799,7 @@ h3 {
   text-align: center;
 }
 
+
 /* Footer buttons on glass look */
 .footer-actions .btn {
   background: rgba(255,255,255,0.9);
@@ -783,6 +808,7 @@ h3 {
   border-radius: 999px;
   padding-inline: 1.1rem;
 }
+
 
 /* Footer button hover: cyan border + edge glow */
 .footer-actions .btn:hover {
@@ -805,14 +831,12 @@ h3 {
   color: var(--muted);
   display: inline-flex;
   transition: transform 0.15s ease, color 0.15s ease;
-  
 }
 
 .footer-social a:hover {
   color: var(--accent-blue-dark);
   transform: translateY(-2px);
 }
-
 
 
 /* ----------------------------------------
@@ -861,7 +885,6 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    Responsive Global Tweaks
    ---------------------------------------- */
@@ -881,7 +904,6 @@ h3 {
     padding: 1.1rem 1rem;
   }
 }
-
 
 
 /* ----------------------------------------
@@ -976,7 +998,6 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    Donate Buttons – Interaction States
    ---------------------------------------- */
@@ -986,6 +1007,7 @@ h3 {
   color: white;
 }
 
+
 /* Active donation option */
 .donation-options .btn.active {
   background: var(--accent-blue);
@@ -993,18 +1015,26 @@ h3 {
   box-shadow: 0 6px 20px rgba(102,184,255,0.25);
 }
 
-/* Donate CTA – green & faded by default */
+
+/* Donate CTA – green & faded by default
+   INCREASED SIZE HERE */
 .donate-cta {
   background: var(--donate-green-faded);
   color: #1f3d2b;
   border: 1px solid rgba(47,143,103,0.35);
   box-shadow: 0 4px 14px rgba(47,143,103,0.25);
+
+  padding: 0.8rem 1.6rem; /* larger main donate CTA */
+  font-size: 1rem;
+  border-radius: 999px;
 }
+
 
 /* Hover (still soft) */
 .donate-cta:hover:not(:disabled) {
   background: rgba(95,191,142,0.65);
 }
+
 
 /* Active (option selected) */
 .donate-cta.active {
@@ -1018,13 +1048,13 @@ h3 {
   box-shadow: 0 10px 30px rgba(47,143,103,0.45);
 }
 
+
 /* Disabled */
 .donate-cta:disabled {
   opacity: 0.55;
   cursor: not-allowed;
   box-shadow: none;
 }
-
 
 
 /* ----------------------------------------
@@ -1049,7 +1079,6 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    Donate Section Animations
    ---------------------------------------- */
@@ -1065,16 +1094,19 @@ h3 {
   }
 }
 
+
 /* Donation cards animation */
 .donate-card {
   animation: fadeUp 0.6s ease-out both;
 }
+
 
 /* Stagger effect for cards */
 .donate-card:nth-child(1) { animation-delay: 0.05s; }
 .donate-card:nth-child(2) { animation-delay: 0.12s; }
 .donate-card:nth-child(3) { animation-delay: 0.19s; }
 .donate-card:nth-child(4) { animation-delay: 0.26s; }
+
 
 /* Donation option buttons hover */
 .donation-options .btn {
@@ -1084,6 +1116,7 @@ h3 {
 .donation-options .btn:hover {
   transform: translateY(-2px);
 }
+
 
 /* Donate CTA pulse when enabled */
 @keyframes softPulse {
@@ -1096,11 +1129,11 @@ h3 {
   animation: softPulse 2.2s ease-out infinite;
 }
 
+
 /* Stop animation on hover (feels intentional) */
 .donate-cta:not(:disabled):hover {
   animation: none;
 }
-
 
 
 /* ----------------------------------------
@@ -1149,6 +1182,7 @@ h3 {
   border: 1px solid rgba(0,0,0,0.1);
 }
 
+
 /* Mobile: bottom sheet */
 @media (max-width: 700px) {
   .contact-panel {
@@ -1165,7 +1199,6 @@ h3 {
     bottom: 0;
   }
 }
-
 
 
 /* ----------------------------------------
@@ -1224,7 +1257,6 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    President Section
    ---------------------------------------- */
@@ -1237,6 +1269,7 @@ h3 {
   border: 1px solid rgba(0,0,0,0.04);
 }
 
+
 /* Centered column layout */
 .president-layout {
   max-width: 760px;
@@ -1245,6 +1278,7 @@ h3 {
   flex-direction: column;
   align-items: center;
 }
+
 
 /* Circular photo */
 .president-photo {
@@ -1263,12 +1297,12 @@ h3 {
    -10px -10px 24px rgba(255, 255, 255, 0.7); /* light highlight */
 }
 
-
 .president-photo img {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
+
 
 /* Text below, paragraph wise */
 .president-content {
@@ -1294,11 +1328,11 @@ h3 {
   color: var(--accent-blue-dark);
 }
 
+
 /* Optional: center heading */
 .president-content h2 {
   text-align: center;
 }
-
 
 
 /* ----------------------------------------
@@ -1312,6 +1346,7 @@ h3 {
   will-change: opacity, transform;
 }
 
+
 /* When in view */
 .reveal-on-scroll.is-visible {
   opacity: 1;
@@ -1319,10 +1354,10 @@ h3 {
 }
 
 
-
 /* ----------------------------------------
    Mobile mini nav toggle
    ---------------------------------------- */
+
 
 /* Hide full nav only on mobile when class applied */
 @media (max-width: 768px) {
