@@ -7,11 +7,7 @@ export default function Hero() {
         <h1>Amar Seva Sangam USA Chapter</h1>
         <p className="tagline">Empowering Persons with Disabilities</p>
 
-        <div className="cta-row">
-          <a href="#donate" className="btn primary">
-            Donate Now
-          </a>
-        </div>
+      
 
         <p className="hero-intro">
           Amar Seva Sangam USA is the newly launched United States chapter of

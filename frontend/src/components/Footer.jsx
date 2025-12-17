@@ -1,4 +1,5 @@
 import BannerStrip from './BannerStrip';
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 export default function Footer({ onContactClick }) {
   return (
@@ -20,20 +21,70 @@ export default function Footer({ onContactClick }) {
           <a href="#president" className="btn small">
             Leadership
           </a>
+         {/*
           <a href="#" className="btn small">
             Privacy Policy
-          </a>
+          </a> 
           <a href="#" className="btn small">
             Terms
-          </a>
+          </a>*/
+         } 
           <button className="btn small" onClick={onContactClick}>
             Contact Us
           </button>
         </div>
 
-        {/* Email section */}
+        
+
+        {/* Follow us section */}
         <div className="footer-copy" style={{ textAlign: 'center' }}>
-          Email:{' '}
+          Follow us on social media for updates and impact stories.
+        </div>
+
+         <div className="footer-social">
+  <a
+    href="https://facebook.com/YOUR_PAGE"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+  >
+    <Facebook size={45} />
+  </a>
+
+  <a
+    href="https://instagram.com/YOUR_PAGE"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <Instagram size={45} />
+  </a>
+
+  <a
+    href="https://twitter.com/YOUR_PAGE"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Twitter"
+  >
+    <Twitter size={45} />
+  </a>
+
+
+  <a
+    href="https://linkedin.com/company/YOUR_PAGE"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+  >
+    <Linkedin size={45} />
+  </a>
+</div>
+
+
+
+{/* Email section */}
+        <div className="footer-copy" style={{ textAlign: 'center' }}>
+          
           <a
             href="mailto:amarsevasangam.usa@gmail.com"
             className="footer-link"
@@ -42,10 +93,6 @@ export default function Footer({ onContactClick }) {
           </a>
         </div>
 
-        {/* Follow us section */}
-        <div className="footer-copy" style={{ textAlign: 'center' }}>
-          Follow us on social media for updates and impact stories.
-        </div>
 
         {/* Copyright section */}
         <div className="footer-copy" style={{ textAlign: 'center' }}>
