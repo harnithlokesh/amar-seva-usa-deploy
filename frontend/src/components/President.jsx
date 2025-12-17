@@ -1,4 +1,4 @@
-import presidentImg from '../assets/president.png';
+import presidentImg from '../assets/president.jpg';
 
 export default function President() {
   return (

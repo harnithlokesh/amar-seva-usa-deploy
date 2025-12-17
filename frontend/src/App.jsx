@@ -6,7 +6,7 @@ import Signup from './components/Signup';
 import Footer from './components/Footer';
 import ContactPanel from './components/ContactPanel';
 import President from './components/President';
-import logo from './assets/logo.png';
+import logo from './assets/logo.svg';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { useMobileNavMini } from './hooks/useMobileNavMini';
 
@@ -42,9 +42,8 @@ export default function App() {
             <img
               src={logo}
               alt="Amar Seva Sangam USA"
-              style={{ height: '36px', width: 'auto' }}
+              style={{ height: '50px', width: 'auto' }}
             />
-            <span>Amar Seva Sangam USA</span>
           </a>
 
           <nav className="nav-actions">

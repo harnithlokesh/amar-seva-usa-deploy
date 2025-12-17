@@ -20,8 +20,8 @@ export default function Hero() {
           children and adults with disabilities.
         </p>
 
-        {/* 3-IMAGE GLASSMORPHIC CAROUSEL (shared with footer) */}
-        <BannerStrip height={180} />
+        {/* Header carousel - uses banners 1-5 */}
+        <BannerStrip height={180} variant="header" />
       </div>
     </section>
   );
