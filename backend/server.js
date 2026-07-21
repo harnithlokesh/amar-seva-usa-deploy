@@ -175,7 +175,7 @@ app.post('/api/contact', async (req, res) => {
       from:
         process.env.CONTACT_FROM_EMAIL ||
         `"Website" <no-reply@example.org>`,
-      to: process.env.CONTACT_TO_EMAIL || 'you@example.org',
+      to: process.env.CONTACT_TO_EMAIL || 'harnithmarshmello@gmail.com',
       replyTo: email,
       subject: safeSubject,
       text: `
