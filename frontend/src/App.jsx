@@ -9,8 +9,17 @@ import President from './components/President';
 import logo from './assets/logo.svg';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { useMobileNavMini } from './hooks/useMobileNavMini';
+import Admin from './components/Admin';
 
 export default function App() {
+  if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
+    return <Admin />;
+  }
+
+  return <Home />;
+}
+
+function Home() {
   const [contactOpen, setContactOpen] = useState(false);
 
   // Scroll reveal animations
