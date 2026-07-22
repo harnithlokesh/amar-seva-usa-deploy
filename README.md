@@ -131,6 +131,12 @@ call the same domain's `/api` routes. Make sure the host provides persistent
 storage for `backend/concert-payments.json` and `backend/subscribers.json`;
 ephemeral server disks will erase those records on redeploy.
 
+If the frontend is deployed separately as a static site, deploy the `frontend`
+folder and redeploy after this change. It includes SPA rewrite rules for Netlify
+and Vercel so a direct visit to `/admin` loads the React application rather than
+returning a hosting-provider 404. For another static host, configure an
+equivalent rewrite from `/*` to `/index.html` with HTTP status 200.
+
 For local development, if port 4000 is occupied, either stop the existing
 process or use port 4001 for both services:
 
