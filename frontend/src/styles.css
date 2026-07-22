@@ -347,6 +347,17 @@ h3 {
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 18px 42px rgba(43, 110, 163, 0.2);
+  border: 0;
+  cursor: zoom-in;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.flyer-frame:hover,
+.flyer-frame:focus-visible {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 22px 48px rgba(43, 110, 163, 0.3);
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 4px;
 }
 
 .flyer-image {
@@ -354,6 +365,57 @@ h3 {
   width: 100%;
   height: auto;
   border-radius: 16px;
+}
+
+.flyer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(11, 24, 38, 0.82);
+  cursor: zoom-out;
+}
+
+.flyer-modal-content {
+  position: relative;
+  display: flex;
+  max-width: min(92vw, 760px);
+  max-height: 92vh;
+  cursor: default;
+}
+
+.flyer-modal-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 92vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.flyer-modal-close {
+  position: absolute;
+  top: -0.85rem;
+  right: -0.85rem;
+  z-index: 1;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  padding: 0;
+  color: #fff;
+  background: #173a59;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.flyer-modal-close:hover,
+.flyer-modal-close:focus-visible {
+  background: var(--accent-blue-dark);
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
 .hero-copy {
